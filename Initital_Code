@@ -1,0 +1,57 @@
+GlowScript 2.6 VPython
+
+
+sun=sphere(color=vector(1,1,0),pos=vec(0,0,0),radius=5, shininess=10)
+earth=sphere(color=vector(0,0,1),pos=vec(50,0,0),radius=1, shininess=10, make_trail=True)
+moon=sphere(color=vector(0.5,0.5,0.5),pos=vec(52,0,0),radius=0.2, shininess=10, make_trail=False)
+mars=sphere(color=vector(0.784,0,0), pos=vec(75,0,0),radius=0.5,shininess=5, make_trail=True)
+venus=sphere(color=vector(1.5,0.8,0.8),pos=vec(35,0,0),radius=0.9, shininess=10, make_trail=True)
+mercury=sphere(color=vector(0.5,0.5,0.3),pos=vec(15,0,0),radius=0.3, shininess=10, make_trail=True)
+jupiter=sphere(color=vector(15,0.2,0), pos=vec(110,0,0),radius=11,shininess=5, make_trail=True)
+saturn=sphere(color=vector(0.5,0.9,0.5), pos=vec(150,0,0),radius=9,shininess=5, make_trail=True)
+uranus=sphere(color=vector(0.2,0.8,0.8), pos=vec(200,0,0),radius=4,shininess=5,make_trail=True)
+neptune=sphere(color=vector(0.301,0.606,0.932), pos=vec(250,0,0), radius= 3, shininess=5, make_trail=True)
+
+
+earth.make_trail=True
+moon.make_trail=False
+mars.make_trail=True
+venus.make_trail=True
+mercury.make_trail=True
+jupiter.make_trail=True
+saturn.make_trail=True
+uranus.make_trail=True
+neptune.make_trail=True
+
+#speed of orbit rotation#
+framerate=100
+earthOmega=2*pi/365
+moonAngle=0
+moonOmega=2*pi/28
+marsOmega=2*pi/687
+venusOmega=2*pi/225
+mercuryOmega=2*pi/88
+jupiterOmega=2*pi/4333
+saturnOmega=2*pi/10756
+uranusOmega=2*pi/30687
+neptuneOmega=2*pi/60190
+
+#angle of orbital rotation#
+while True:
+  rate(framerate)
+  earth.rotate(angle=earthOmega, axis=vector(0,2,0), origin=vector(0,0,0))
+  mars.rotate(angle=marsOmega, axis=vector(0,3.5,1.8), origin=vector(0,0,0))
+  venus.rotate(angle=venusOmega, axis=vector(0,1.5,1.3), origin=vector(0,0,0))
+  mercury.rotate(angle=mercuryOmega,axis=vector(0,1,7), origin=vector(0,0,0))
+  jupiter.rotate(angle=jupiterOmega,axis=vector(0,5,1.3),origin=vector(0,0,0))
+  saturn.rotate(angle=saturnOmega,axis=vector(0,6,2.4),origin=vector(0,0,0))
+  uranus.rotate(angle=uranusOmega,axis=vector(0,8,0.7),origin=vector(0,0,0))
+  neptune.rotate(angle=neptuneOmega,axis=vector(0,10,1.8),origin=vector(0,0,0))
+
+
+#Code for moon around earth#
+  moonAngle+=moonOmega
+
+  moon.pos=earth.pos + vector(2,0,0)
+  moon.rotate(angle=moonAngle, axis=vector(0,1,0), origin=earth.pos)
+  
